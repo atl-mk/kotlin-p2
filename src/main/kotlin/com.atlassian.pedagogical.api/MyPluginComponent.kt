@@ -1,5 +1,5 @@
 package com.atlassian.pedagogical.api;
 
 public interface MyPluginComponent {
-    String getName();
+    fun getName(): java.lang.String;
 }
