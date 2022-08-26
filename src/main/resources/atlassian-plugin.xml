@@ -7,4 +7,8 @@
 
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="kotlin-p2"/>
+
+    <rest key="mixed-rest" path="/kotlin-example" version="1.0">
+        <description>Provides hello world services.</description>
+    </rest>
 </atlassian-plugin>

@@ -1,5 +1,5 @@
 package com.atlassian.pedagogical;
 
 public class Other {
-    private static final Foo foo = new FooImple();
+    private static final Foo foo = new FooImpl();
 }
