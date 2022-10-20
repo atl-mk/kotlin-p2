@@ -1,0 +1,15 @@
+
+### Set setting to foo
+POST http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/setting ?word=foo
+Content-Type: application/x-www-form-urlencoded
+X-Atlassian-Token: no-check
+
+### Set setting to bar
+POST http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/setting ?word=bar
+Content-Type: application/x-www-form-urlencoded
+X-Atlassian-Token: no-check
+
+### Get setting
+GET http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/setting
+Accept: text/plain
+
