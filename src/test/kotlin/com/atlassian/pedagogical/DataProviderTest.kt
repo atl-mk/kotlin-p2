@@ -18,6 +18,7 @@ class DataProviderTest {
                         emptyList()))
                 .contentType(JSON)
                 .`when`()
+                // This is a private API that is subject to change, use at your own peril!
                 .post(getBaseUrl() + "rest/webResources/1.0/resources")
                 .then()
                 .assertThat()
@@ -39,6 +40,7 @@ class DataProviderTest {
                         emptyList()))
                 .contentType(JSON)
                 .`when`()
+                // This is a private API that is subject to change, use at your own peril!
                 .post(getBaseUrl() + "rest/webResources/1.0/resources")
                 .then()
                 .assertThat()
