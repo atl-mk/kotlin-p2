@@ -3,6 +3,7 @@ package com.atlassian.pedagogical.frontend.servlet
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport
 import com.atlassian.soy.renderer.SoyException
 import com.atlassian.soy.renderer.SoyTemplateRenderer
+import com.google.common.annotations.VisibleForTesting
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import java.nio.charset.StandardCharsets
@@ -20,8 +21,9 @@ class KotlinServlet @Autowired constructor(
     private val resourceKey = ":kotlin-base-resources"
     private val templateKey = "atlassian.kotlin.kotlinBase"
 
-    override fun doGet(req: HttpServletRequest?, resp: HttpServletResponse?) {
-        resp!!.setContentType("text/html;charset=" + encoding)
+    @VisibleForTesting
+    public override fun doGet(req: HttpServletRequest?, resp: HttpServletResponse?) {
+        resp!!.contentType = "text/html;charset=$encoding"
 
         try {
             soyTemplateRenderer.render(
