@@ -4,50 +4,54 @@ import com.atlassian.pedagogical.util.getBaseUrl
 import io.restassured.RestAssured
 import io.restassured.http.ContentType.JSON
 import org.hamcrest.Matchers.equalTo
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class DataProviderTest {
+    private val pluginKey = "com.atlassian.pedagogical.kotlin-p2"
+    private val webResourceUrl = "rest/webResources/1.0/resources"
+
     @Test
+    @Disabled
     fun `Test Java data provider`() {
         RestAssured
                 .given()
                 .body(WebResourceV1RequestBody(
                         emptyList(),
-                        listOf("com.atlassian.pedagogical.kotlin-p2:java-data-provider-web-resource"),
+                        listOf("$pluginKey:java-data-provider-web-resource"),
                         emptyList(),
                         emptyList()))
                 .contentType(JSON)
-                .`when`()
                 // This is a private API that is subject to change, use at your own peril!
-                .post(getBaseUrl() + "rest/webResources/1.0/resources")
+                .post(getBaseUrl() + webResourceUrl)
                 .then()
                 .assertThat()
                 .statusCode(200)
                 .contentType(JSON)
                 .body("unparsedData", equalTo(
-                        mapOf(Pair("com.atlassian.pedagogical.kotlin-p2:java-data-provider-web-resource.java-data-provider",
+                        mapOf(Pair("$pluginKey:java-data-provider-web-resource.java-data-provider",
                                 "{\"key\":\"value\"}"))))
     }
 
     @Test
+    @Disabled
     fun `Test Kotlin data provider`() {
         RestAssured
                 .given()
                 .body(WebResourceV1RequestBody(
                         emptyList(),
-                        listOf("com.atlassian.pedagogical.kotlin-p2:kotlin-data-provider-web-resource"),
+                        listOf("$pluginKey:kotlin-data-provider-web-resource"),
                         emptyList(),
                         emptyList()))
                 .contentType(JSON)
-                .`when`()
                 // This is a private API that is subject to change, use at your own peril!
-                .post(getBaseUrl() + "rest/webResources/1.0/resources")
+                .post(getBaseUrl() + webResourceUrl)
                 .then()
                 .assertThat()
                 .statusCode(200)
                 .contentType(JSON)
                 .body("unparsedData", equalTo(
-                        mapOf(Pair("com.atlassian.pedagogical.kotlin-p2:kotlin-data-provider-web-resource.kotlin-data-provider",
+                        mapOf(Pair("$pluginKey:kotlin-data-provider-web-resource.kotlin-data-provider",
                                 "{\"key\":\"value\"}"))))
     }
 
