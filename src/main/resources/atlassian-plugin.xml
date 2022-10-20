@@ -11,4 +11,16 @@
     <rest key="mixed-rest" path="/kotlin-example" version="1.0">
         <description>Provides hello world services.</description>
     </rest>
+
+    <web-resource name="Required web resource for the Java based data provider" key="java-data-provider-web-resource">
+        <data name="Java based data provider"
+                key="java-data-provider"
+                class="com.atlassian.pedagogical.frontend.data.JavaDataProvider"/>
+    </web-resource>
+
+    <web-resource name="Required web resource for the Kotlin based data provider" key="kotlin-data-provider-web-resource">
+        <data name="Kotlin based data provider"
+                key="kotlin-data-provider"
+                class="com.atlassian.pedagogical.frontend.data.KotlinDataProvider"/>
+    </web-resource>
 </atlassian-plugin>

@@ -28,9 +28,11 @@
         <platform.version>5.0.0</platform.version>
         <refapp.version>5.0.0</refapp.version>
         <amps.version>8.7.0</amps.version>
+        <atl.json.version>1.0.0</atl.json.version>
         <osgi.javaconfig.version>0.5.0</osgi.javaconfig.version>
         <spring.version>5.2.21.RELEASE</spring.version>
         <atlassian.spring.scanner.version>2.2.4</atlassian.spring.scanner.version>
+        <webresource.version>4.0.0</webresource.version>
 
         <java.version>1.8</java.version>
         <kotlin.version>1.7.20</kotlin.version>
@@ -44,6 +46,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <osgi.core.version>6.0.0</osgi.core.version>
+        <jackson-kotlin.version>2.13.4</jackson-kotlin.version>
+        <rest-assured.version>5.2.0</rest-assured.version>
     </properties>
 
     <dependencyManagement>
@@ -69,10 +73,22 @@
                 <version>${kotlin.version}</version>
             </dependency>
 
+            <!-- Missing from the 5.0.0 platform POM -->
+            <dependency>
+                <groupId>com.atlassian.json</groupId>
+                <artifactId>atlassian-json-api</artifactId>
+                <version>${atl.json.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.atlassian.plugins</groupId>
                 <artifactId>atlassian-plugins-osgi-javaconfig</artifactId>
                 <version>${osgi.javaconfig.version}</version>
+            </dependency>
+            <!-- Missing from the 5.0.0 platform POM -->
+            <dependency>
+                <groupId>com.atlassian.plugins</groupId>
+                <artifactId>atlassian-plugins-webresource-api</artifactId>
+                <version>${webresource.version}</version>
             </dependency>
 
             <dependency>
@@ -90,6 +106,17 @@
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-kotlin</artifactId>
+                <version>${jackson-kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>${rest-assured.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -103,6 +130,12 @@
         <dependency>
             <groupId>com.atlassian.plugins</groupId>
             <artifactId>atlassian-plugins-osgi-javaconfig</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
             <scope>compile</scope>
         </dependency>
 
@@ -131,6 +164,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.atlassian.json</groupId>
+            <artifactId>atlassian-json-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.atlassian.sal</groupId>
             <artifactId>sal-api</artifactId>
             <scope>provided</scope>
@@ -138,6 +176,11 @@
         <dependency>
             <groupId>com.atlassian.plugins.rest</groupId>
             <artifactId>atlassian-rest-module</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.plugins</groupId>
+            <artifactId>atlassian-plugins-webresource-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -168,6 +211,11 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
@@ -184,6 +232,11 @@
                     <artifactId>amps-maven-plugin</artifactId>
                     <version>${amps.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>com.atlassian.plugin</groupId>
+                    <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
+                    <version>${atlassian.spring.scanner.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -191,7 +244,6 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
                 <configuration>
                     <jvmTarget>${kotlin.jvmTarget}</jvmTarget>
                 </configuration>
@@ -295,7 +347,6 @@
             <plugin>
                 <groupId>com.atlassian.plugin</groupId>
                 <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
-                <version>${atlassian.spring.scanner.version}</version>
                 <executions>
                     <execution>
                         <goals>
