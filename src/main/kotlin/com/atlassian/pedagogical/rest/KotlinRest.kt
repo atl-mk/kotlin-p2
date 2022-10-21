@@ -1,18 +1,22 @@
 package com.atlassian.pedagogical.rest
 
+import com.atlassian.pedagogical.ao.dao.SampleEntityDao
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport
 import com.atlassian.plugins.rest.common.security.AnonymousAllowed
 import com.atlassian.sal.api.ApplicationProperties
 import org.springframework.beans.factory.annotation.Autowired
 import javax.ws.rs.GET
+import javax.ws.rs.POST
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
+import kotlin.random.Random
 
 // Don't want two REST resources with the same root path
 @Path("/kotlin")
 class KotlinRest @Autowired constructor(
-    @ComponentImport private val applicationProperties: ApplicationProperties
+    @ComponentImport private val applicationProperties: ApplicationProperties,
+    private val sampleEntityDao: SampleEntityDao
 ) {
 
     /**
@@ -31,7 +35,24 @@ class KotlinRest @Autowired constructor(
     @Path("info")
     @AnonymousAllowed
     @Produces(MediaType.TEXT_PLAIN)
-    fun helloWorld(): String {
+    fun info(): String {
         return "buildNumber: ${applicationProperties.buildNumber}, version: ${applicationProperties.version}"
+    }
+
+    @GET
+    @POST
+    @Path("test-ao")
+    @AnonymousAllowed
+    @Produces(MediaType.TEXT_PLAIN)
+    fun testAo(): String {
+
+        val randomNum = Random.nextInt(0, 999999999)
+
+        val name = "SomeRandomName$randomNum"
+
+        sampleEntityDao.save(name)
+        val entity = sampleEntityDao.get(name)!!
+
+        return "Persisted entity => {id: ${entity.id}, name: ${entity.name}, time:${entity.eventTimestamp}}"
     }
 }

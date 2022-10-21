@@ -5,6 +5,10 @@
         <vendor name="${project.organization.name}" url="${project.organization.url}" />
     </plugin-info>
 
+    <ao key="plugin-ao-module" name="Active Objects module">
+        <entity>com.atlassian.pedagogical.ao.entity.SampleEntity</entity>
+    </ao>
+
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="kotlin-p2"/>
 
