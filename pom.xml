@@ -25,15 +25,15 @@
     <packaging>atlassian-plugin</packaging>
 
     <properties>
-        <platform.version>6.0.13</platform.version>
-        <refapp.version>6.1.0-f9fae4d0</refapp.version>
+        <platform.version>5.0.0</platform.version>
+        <refapp.version>5.0.0</refapp.version>
         <amps.version>8.7.0</amps.version>
         <atl.json.version>1.0.0</atl.json.version>
         <osgi.javaconfig.version>0.5.0</osgi.javaconfig.version>
         <spring.version>5.2.21.RELEASE</spring.version>
         <atlassian.spring.scanner.version>2.2.4</atlassian.spring.scanner.version>
-        <atlassian.profiling.version>4.5.0</atlassian.profiling.version>
-        <activeobjects.version>4.1.1</activeobjects.version>
+        <atlassian.profiling.version>1.3</atlassian.profiling.version>
+        <activeobjects.version>3.0.3</activeobjects.version>
         <webresource.version>4.0.0</webresource.version>
 
         <java.version>1.8</java.version>
@@ -49,7 +49,7 @@
 
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <mockito.version>4.8.0</mockito.version>
-        <h2.version>2.1.214</h2.version>
+        <h2.version>1.4.200</h2.version>
         <jackson-kotlin.version>2.13.4</jackson-kotlin.version>
         <rest-assured.version>5.2.0</rest-assured.version>
     </properties>
@@ -231,7 +231,7 @@
         <dependency>
             <groupId>com.atlassian.activeobjects</groupId>
             <artifactId>activeobjects-test</artifactId>
-            <version>${activeobjects.version}</version>
+            <version>4.0.1</version>
             <scope>test</scope>
         </dependency>
 
