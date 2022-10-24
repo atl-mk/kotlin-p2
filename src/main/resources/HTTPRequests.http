@@ -1,0 +1,27 @@
+
+### Setting 1
+POST http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/setting
+Content-Type: application/json
+X-Atlassian-Token: no-check
+
+{
+	"word": "hello",
+	"otherword": "nice"
+}
+
+
+### Setting 2
+POST http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/setting
+Content-Type: application/json
+X-Atlassian-Token: no-check
+
+{
+	"word": "goodbye",
+	"otherword": "notnice"
+}
+
+
+### Get setting
+GET http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/setting
+Accept: application/json
+
