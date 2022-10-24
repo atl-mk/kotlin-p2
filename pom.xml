@@ -37,6 +37,7 @@
         <kotlin.jvmTarget>1.8</kotlin.jvmTarget>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
+        <jackson.version>2.9.8</jackson.version>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
 
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
@@ -97,7 +98,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
-            <version>2.9.8</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
