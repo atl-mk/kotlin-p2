@@ -5,8 +5,9 @@ import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport
 import com.atlassian.plugins.rest.common.security.AnonymousAllowed
 import com.atlassian.sal.api.ApplicationProperties
 import org.springframework.beans.factory.annotation.Autowired
+import java.text.SimpleDateFormat
+import java.util.Date
 import javax.ws.rs.GET
-import javax.ws.rs.POST
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
@@ -40,7 +41,6 @@ class KotlinRest @Autowired constructor(
     }
 
     @GET
-    @POST
     @Path("test-ao")
     @AnonymousAllowed
     @Produces(MediaType.TEXT_PLAIN)
@@ -52,7 +52,8 @@ class KotlinRest @Autowired constructor(
 
         sampleEntityDao.save(name)
         val entity = sampleEntityDao.get(name)!!
+        val timeFormatted = SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Date(entity.eventTimestamp))
 
-        return "Persisted entity => {id: ${entity.id}, name: ${entity.name}, time:${entity.eventTimestamp}}"
+        return "Persisted entity => {Id: ${entity.id}, Name: ${entity.name}, Created at:${timeFormatted}}"
     }
 }
