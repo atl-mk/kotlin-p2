@@ -27,13 +27,13 @@ internal class KotlinServletTest {
     lateinit var kotlinServlet: KotlinServlet
 
     @Test
-    fun testHtmlContentType() {
+    fun `contentType should be html`() {
         kotlinServlet.doGet(request, response)
         verify { response.contentType = "text/html;charset=UTF-8" }
     }
 
     @Test
-    fun testSoyTemplateRenderIsCalledWithModuleKey() {
+    fun `moduleKey should be set correctly`() {
         val moduleKey = "com.atlassian.pedagogical.kotlin-p2:kotlin-base-resources"
         val templateKey = "atlassian.kotlin.kotlinBase"
 
