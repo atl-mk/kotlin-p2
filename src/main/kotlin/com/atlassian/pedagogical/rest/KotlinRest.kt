@@ -23,7 +23,6 @@ import kotlin.random.Random
 class KotlinRest @Autowired constructor(
     @ComponentImport private val applicationProperties: ApplicationProperties,
     private val sampleEntityDao: SampleEntityDao,
-    @ComponentImport private val applicationProperties: ApplicationProperties,
     @ComponentImport private val pluginSettingsFactory: PluginSettingsFactory
 ) {
     val pluginSettings: PluginSettings = pluginSettingsFactory.createGlobalSettings()
