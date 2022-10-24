@@ -16,6 +16,16 @@
         <description>Provides hello world services.</description>
     </rest>
 
+    <servlet name="Kotlin Servlet" key="kotlin-frontend" class="com.atlassian.pedagogical.frontend.servlet.KotlinServlet">
+        <description>Kotlin based servlet for the frontend.</description>
+        <url-pattern>/kotlin*</url-pattern>
+    </servlet>
+
+    <servlet name="Java Servlet" key="java-frontend" class="com.atlassian.pedagogical.frontend.servlet.JavaServlet">
+        <description>Java based servlet for the frontend.</description>
+        <url-pattern>/java*</url-pattern>
+    </servlet>
+
     <web-resource name="Required web resource for the Java based data provider" key="java-data-provider-web-resource">
         <data name="Java based data provider"
                 key="java-data-provider"
@@ -27,4 +37,17 @@
                 key="kotlin-data-provider"
                 class="com.atlassian.pedagogical.frontend.data.KotlinDataProvider"/>
     </web-resource>
+
+    <web-resource name="Kotlin based servlet with soy template" key="kotlin-base-resources">
+        <context>kotlin</context>
+        <resource type="soy" name="kotlin-refapp-ui" location="soy/refapp.soy"/>
+        <dependency>com.atlassian.auiplugin:soy</dependency>
+    </web-resource>
+
+    <web-resource name="Java based servlet with soy template" key="java-base-resources">
+        <context>java</context>
+        <resource type="soy" name="java-refapp-ui" location="soy/refapp.soy"/>
+        <dependency>com.atlassian.auiplugin:soy</dependency>
+    </web-resource>
+
 </atlassian-plugin>
