@@ -25,6 +25,8 @@
     <packaging>atlassian-plugin</packaging>
 
     <properties>
+        <!-- Please note that the versions we've picked are for compatibility. We recommend you review the versions
+             and make sure there are no vulnerable dependencies -->
         <platform.version>5.0.0</platform.version>
         <refapp.version>5.0.0</refapp.version>
         <amps.version>8.7.0</amps.version>
