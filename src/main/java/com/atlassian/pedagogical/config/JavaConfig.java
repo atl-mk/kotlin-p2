@@ -3,6 +3,7 @@ package com.atlassian.pedagogical.config;
 import com.atlassian.pedagogical.Bar;
 import com.atlassian.pedagogical.BarImpl;
 import com.atlassian.sal.api.ApplicationProperties;
+import com.atlassian.soy.renderer.SoyTemplateRenderer;
 import org.osgi.framework.ServiceRegistration;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -29,5 +30,10 @@ public class JavaConfig {
     @Bean
     public ApplicationProperties applicationProperties() {
         return importOsgiService(ApplicationProperties.class);
+    }
+
+    @Bean
+    public SoyTemplateRenderer soyTemplateRenderer() {
+        return importOsgiService(SoyTemplateRenderer.class);
     }
 }

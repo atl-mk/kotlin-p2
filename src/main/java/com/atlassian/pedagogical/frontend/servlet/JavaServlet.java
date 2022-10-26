@@ -1,6 +1,5 @@
 package com.atlassian.pedagogical.frontend.servlet;
 
-import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.atlassian.soy.renderer.SoyException;
 import com.atlassian.soy.renderer.SoyTemplateRenderer;
 
@@ -17,7 +16,7 @@ public class JavaServlet extends HttpServlet {
 
     private final SoyTemplateRenderer soyTemplateRenderer;
 
-    public JavaServlet(@ComponentImport final SoyTemplateRenderer soyTemplateRenderer) {
+    public JavaServlet(final SoyTemplateRenderer soyTemplateRenderer) {
         this.soyTemplateRenderer = soyTemplateRenderer;
     }
 
