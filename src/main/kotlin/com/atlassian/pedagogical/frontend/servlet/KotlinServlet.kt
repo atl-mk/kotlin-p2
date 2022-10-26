@@ -1,6 +1,5 @@
 package com.atlassian.pedagogical.frontend.servlet
 
-import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport
 import com.atlassian.soy.renderer.SoyException
 import com.atlassian.soy.renderer.SoyTemplateRenderer
 import com.google.common.annotations.VisibleForTesting
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletResponse
 
 @Component
 class KotlinServlet @Autowired constructor(
-    @ComponentImport private val soyTemplateRenderer: SoyTemplateRenderer
+    private val soyTemplateRenderer: SoyTemplateRenderer
 ) : HttpServlet() {
     private val encoding = StandardCharsets.UTF_8.name()
     private val pluginKey = "com.atlassian.pedagogical.kotlin-p2"
