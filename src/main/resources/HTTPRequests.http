@@ -25,3 +25,6 @@ X-Atlassian-Token: no-check
 GET http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/setting
 Accept: application/json
 
+
+### Test AO
+GET http://localhost:5990/refapp/rest/kotlin-example/1.0/kotlin/test-ao

@@ -7,7 +7,6 @@ import com.atlassian.sal.api.ApplicationProperties
 import com.atlassian.sal.api.pluginsettings.PluginSettings
 import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.springframework.beans.factory.annotation.Autowired
 import java.text.SimpleDateFormat
 import java.util.Date
 import javax.ws.rs.*
@@ -23,7 +22,7 @@ import kotlin.random.Random
 
 // Don't want two REST resources with the same root path
 @Path("/kotlin")
-class KotlinRest @Autowired constructor(
+class KotlinRest constructor(
     private val applicationProperties: ApplicationProperties,
     private val pluginSettingsFactory: PluginSettingsFactory,
     private val objectMapper: ObjectMapper,
