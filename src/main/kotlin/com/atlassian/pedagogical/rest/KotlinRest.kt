@@ -1,7 +1,6 @@
 package com.atlassian.pedagogical.rest
 
 import com.atlassian.pedagogical.rest.model.SettingsBodyJson
-import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport
 import com.atlassian.plugins.rest.common.security.AnonymousAllowed
 import com.atlassian.sal.api.ApplicationProperties
 import com.atlassian.sal.api.pluginsettings.PluginSettings
