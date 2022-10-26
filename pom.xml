@@ -33,7 +33,6 @@
         <atl.json.version>1.0.0</atl.json.version>
         <osgi.javaconfig.version>0.5.0</osgi.javaconfig.version>
         <spring.version>5.2.21.RELEASE</spring.version>
-        <atlassian.spring.scanner.version>2.2.4</atlassian.spring.scanner.version>
         <activeobjects.version>3.0.3</activeobjects.version>
         <webresource.version>4.0.0</webresource.version>
 
@@ -147,18 +146,6 @@
         <dependency>
             <groupId>com.atlassian.plugins</groupId>
             <artifactId>atlassian-plugins-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.atlassian.plugin</groupId>
-            <artifactId>atlassian-spring-scanner-annotation</artifactId>
-            <version>${atlassian.spring.scanner.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.atlassian.plugin</groupId>
-            <artifactId>atlassian-spring-scanner-runtime</artifactId>
-            <version>${atlassian.spring.scanner.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -292,11 +279,6 @@
                     <artifactId>amps-maven-plugin</artifactId>
                     <version>${amps.version}</version>
                 </plugin>
-                <plugin>
-                    <groupId>com.atlassian.plugin</groupId>
-                    <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
-                    <version>${atlassian.spring.scanner.version}</version>
-                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -411,21 +393,6 @@
                         <Spring-Context>*</Spring-Context>
                         <Atlassian-Scan-Folders>META-INF/plugin-descriptors</Atlassian-Scan-Folders>
                     </instructions>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.atlassian.plugin</groupId>
-                <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>atlassian-spring-scanner</goal>
-                        </goals>
-                        <phase>process-classes</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <verbose>false</verbose>
                 </configuration>
             </plugin>
         </plugins>
