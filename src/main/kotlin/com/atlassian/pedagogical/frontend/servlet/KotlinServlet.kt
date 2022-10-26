@@ -3,16 +3,13 @@ package com.atlassian.pedagogical.frontend.servlet
 import com.atlassian.soy.renderer.SoyException
 import com.atlassian.soy.renderer.SoyTemplateRenderer
 import com.google.common.annotations.VisibleForTesting
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
 import java.nio.charset.StandardCharsets
 import javax.servlet.ServletException
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@Component
-class KotlinServlet @Autowired constructor(
+class KotlinServlet constructor(
     private val soyTemplateRenderer: SoyTemplateRenderer
 ) : HttpServlet() {
     private val encoding = StandardCharsets.UTF_8.name()
