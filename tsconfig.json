@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    
+    "jsx": "react",
+    
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./src/frontend/types/", "./node_modules/@types/"]
+  },
+  "include": ["./src/frontend/"],
+  "exclude": ["target", "node_modules"]
+}

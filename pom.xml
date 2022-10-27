@@ -1,32 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>com.atlassian.pom</groupId>
         <artifactId>public-pom</artifactId>
         <version>6.2.5</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.atlassian.pedagogical</groupId>
     <artifactId>kotlin-p2</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <organization>
         <name>Atlassian</name>
         <url>https://atlassian.com/</url>
     </organization>
-
     <name>kotlin-p2</name>
     <description>This is the com.atlassian.pedagogical:kotlin-p2 plugin for Atlassian Refapp.</description>
     <packaging>atlassian-plugin</packaging>
-
     <properties>
-        <!-- Please note that the versions we've picked are for compatibility. We recommend you review the versions
-             and make sure there are no vulnerable dependencies -->
         <platform.version>5.0.0</platform.version>
         <refapp.version>5.0.0</refapp.version>
         <amps.version>8.7.0</amps.version>
@@ -35,27 +24,31 @@
         <spring.version>5.2.21.RELEASE</spring.version>
         <activeobjects.version>3.0.3</activeobjects.version>
         <webresource.version>4.0.0</webresource.version>
-
         <java.version>1.8</java.version>
         <kotlin.version>1.7.20</kotlin.version>
         <kotlin.jvmTarget>1.8</kotlin.jvmTarget>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-
         <jackson.version>2.9.8</jackson.version>
-
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <osgi.core.version>6.0.0</osgi.core.version>
-
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <kotest.version>5.4.2</kotest.version>
         <h2.version>1.4.200</h2.version>
         <jackson-kotlin.version>2.13.4</jackson-kotlin.version>
         <rest-assured.version>5.2.0</rest-assured.version>
+        <frontend.maven.plugin.version>1.6</frontend.maven.plugin.version>
+        <frontend.maven.plugin.install.directory>${project.build.directory}</frontend.maven.plugin.install.directory>
+        <frontend.working.directory>${project.basedir}</frontend.working.directory>
+        <frontend.node.version>v16.17.1</frontend.node.version>
+        <frontend.yarn.version>v1.22.19</frontend.yarn.version>
+        <frontend.cmd.install>install</frontend.cmd.install>
+        <frontend.cmd.build>build</frontend.cmd.build>
+        <frontend.cmd.watch.prepare>start:watch-prepare</frontend.cmd.watch.prepare>
+        <frontend.build.mode>production</frontend.build.mode>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -72,14 +65,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-stdlib-jdk8</artifactId>
                 <version>${kotlin.version}</version>
             </dependency>
-
-            <!-- Missing from the 5.0.0 platform POM -->
             <dependency>
                 <groupId>com.atlassian.json</groupId>
                 <artifactId>atlassian-json-api</artifactId>
@@ -90,13 +80,11 @@
                 <artifactId>atlassian-plugins-osgi-javaconfig</artifactId>
                 <version>${osgi.javaconfig.version}</version>
             </dependency>
-            <!-- Missing from the 5.0.0 platform POM -->
             <dependency>
                 <groupId>com.atlassian.plugins</groupId>
                 <artifactId>atlassian-plugins-webresource-api</artifactId>
                 <version>${webresource.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>osgi.core</artifactId>
@@ -112,7 +100,6 @@
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
                 <artifactId>jackson-module-kotlin</artifactId>
@@ -125,14 +112,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>com.atlassian.json</groupId>
             <artifactId>atlassian-json-api</artifactId>
@@ -163,14 +148,12 @@
             <artifactId>jackson-module-kotlin</artifactId>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>com.atlassian.activeobjects</groupId>
             <artifactId>activeobjects-plugin</artifactId>
             <version>${activeobjects.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
@@ -182,7 +165,6 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>com.atlassian.json</groupId>
             <artifactId>atlassian-json-api</artifactId>
@@ -203,7 +185,6 @@
             <artifactId>atlassian-plugins-webresource-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>osgi.core</artifactId>
@@ -224,22 +205,18 @@
             <artifactId>slf4j-simple</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <!-- Test deps -->
         <dependency>
             <groupId>com.atlassian.activeobjects</groupId>
             <artifactId>activeobjects-test</artifactId>
             <version>4.0.1</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -264,8 +241,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-
     <build>
         <pluginManagement>
             <plugins>
@@ -281,7 +256,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -329,12 +303,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <executions>
-                    <!-- Replacing default-compile as it is treated specially by maven -->
                     <execution>
                         <id>default-compile</id>
                         <phase>none</phase>
                     </execution>
-                    <!-- Replacing default-testCompile as it is treated specially by maven -->
                     <execution>
                         <id>default-testCompile</id>
                         <phase>none</phase>
@@ -367,34 +339,131 @@
                     <productVersion>${refapp.version}</productVersion>
                     <extractDependencies>false</extractDependencies>
                     <enableQuickReload>true</enableQuickReload>
-
-                    <!-- See here for an explanation of default instructions: -->
-                    <!-- https://developer.atlassian.com/docs/advanced-topics/configuration-of-instructions-in-atlassian-plugins -->
                     <instructions>
                         <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
-
-                        <!-- Add package to export here -->
-                        <Export-Package>
-                            com.atlassian.pedagogical
-                        </Export-Package>
-
-                        <!-- Add package import here -->
-                        <Import-Package>
-                            org.springframework.osgi.*;resolution:="optional",
+                        <Export-Package>com.atlassian.pedagogical</Export-Package>
+                        <Import-Package>org.springframework.osgi.*;resolution:="optional",
                             org.eclipse.gemini.blueprint.*;resolution:="optional",
-                            *;resolution:="optional"
-                        </Import-Package>
-
-                        <Private-Package>
-                            kotlin.*
-                        </Private-Package>
-
-                        <!-- Ensure plugin is spring powered -->
+                            *;resolution:="optional"</Import-Package>
+                        <Private-Package>kotlin.*</Private-Package>
                         <Spring-Context>*</Spring-Context>
                         <Atlassian-Scan-Folders>META-INF/plugin-descriptors</Atlassian-Scan-Folders>
                     </instructions>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>${frontend.maven.plugin.version}</version>
+                <configuration>
+                    <nodeVersion>${frontend.node.version}</nodeVersion>
+                    <yarnVersion>${frontend.yarn.version}</yarnVersion>
+                    <installDirectory>${frontend.maven.plugin.install.directory}</installDirectory>
+                    <workingDirectory>${frontend.working.directory}</workingDirectory>
+                    <environmentVariables>
+                        <NODE_ENV>${frontend.build.mode}</NODE_ENV>
+                    </environmentVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>step-1-install-node-and-yarn</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>install-node-and-yarn</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>step-2-install-dependencies</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>${frontend.cmd.install}</arguments>
+                            <environmentVariables>
+                                <NODE_ENV>development</NODE_ENV>
+                            </environmentVariables>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>build-mode-is-set-by-node-env</id>
+            <activation>
+                <property>
+                    <name>env.NODE_ENV</name>
+                </property>
+            </activation>
+            <properties>
+                <frontend.build.mode>${env.NODE_ENV}</frontend.build.mode>
+            </properties>
+        </profile>
+        <profile>
+            <id>build</id>
+            <activation>
+                <property>
+                    <name>!watchMode</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <configuration>
+                            <installDirectory>${frontend.maven.plugin.install.directory}</installDirectory>
+                            <workingDirectory>${frontend.working.directory}</workingDirectory>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>step-3-build-frontend</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>yarn</goal>
+                                </goals>
+                                <configuration>
+                                    <arguments>${frontend.cmd.build}</arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>watch-prepare</id>
+            <activation>
+                <property>
+                    <name>watchMode</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <configuration>
+                            <installDirectory>${frontend.maven.plugin.install.directory}</installDirectory>
+                            <workingDirectory>${frontend.working.directory}</workingDirectory>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>step-3-watch-prepare-frontend</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>yarn</goal>
+                                </goals>
+                                <configuration>
+                                    <arguments>${frontend.cmd.watch.prepare}</arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

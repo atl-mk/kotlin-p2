@@ -1,0 +1,51 @@
+{
+  "version": "0.0.0",
+  "name": "com.atlassian.pedagogical.kotlin-p2",
+  "license": "ISC",
+  "scripts": {
+    "build": "atlas-fe build",
+    "start": "atlas-fe start",
+    "start:watch": "atlas-fe watch",
+    "start:watch-prepare": "atlas-fe watch-prepare",
+    "start:prepare": "atlas-debug -U -DwatchMode -DskipTests",
+    "lint": "eslint . --fix",
+    "format": "prettier . --write"
+  },
+  "devDependencies": {
+    "@atlassian/atlas-fe": "^0.3.3",
+    "@atlassian/atlas-fe-clientside-extensions": "^0.3.3",
+    "@atlassian/atlas-fe-react": "^0.3.3",
+    "@atlassian/atlas-fe-typescript": "^0.3.3",
+    "@types/react": "^18.0.23",
+    "@types/react-dom": "^18.0.7",
+    "typescript": "^4.8.4"
+  },
+  "babel": {
+    "presets": [
+      "module:@atlassian/atlas-fe/presets/babel",
+      "module:@atlassian/atlas-fe-typescript/presets/babel",
+      "module:@atlassian/atlas-fe-react/presets/babel"
+    ]
+  },
+  "browserslist": [
+    "extends @atlassian/browserslist-config-server"
+  ],
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@atlassian/eslint-config-atlas-fe/javascript",
+      "@atlassian/eslint-config-atlas-fe/typescript",
+      "@atlassian/eslint-config-atlas-fe/react",
+      "@atlassian/eslint-config-atlas-fe/prettier"
+    ],
+    "ignorePatterns": [
+      "node_modules",
+      "target"
+    ]
+  },
+  "prettier": "@atlassian/atlas-fe/presets/prettier",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
