@@ -1,10 +1,9 @@
-package com.atlassian.pedagogical
+package it.com.atlassian.pedagogical.wired
 
 import com.atlassian.pedagogical.util.getBaseUrl
 import io.restassured.RestAssured
 import io.restassured.http.ContentType.JSON
 import org.hamcrest.Matchers.equalTo
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class DataProviderTest {
@@ -12,15 +11,16 @@ class DataProviderTest {
     private val webResourceUrl = "rest/webResources/1.0/resources"
 
     @Test
-    @Disabled
     fun `Test Java data provider`() {
         RestAssured
                 .given()
-                .body(WebResourceV1RequestBody(
+                .body(
+                    WebResourceV1RequestBody(
                         emptyList(),
                         listOf("$pluginKey:java-data-provider-web-resource"),
                         emptyList(),
-                        emptyList()))
+                        emptyList())
+                )
                 .contentType(JSON)
                 // This is a private API that is subject to change, use at your own peril!
                 .post(getBaseUrl() + webResourceUrl)
@@ -34,15 +34,16 @@ class DataProviderTest {
     }
 
     @Test
-    @Disabled
     fun `Test Kotlin data provider`() {
         RestAssured
                 .given()
-                .body(WebResourceV1RequestBody(
+                .body(
+                    WebResourceV1RequestBody(
                         emptyList(),
                         listOf("$pluginKey:kotlin-data-provider-web-resource"),
                         emptyList(),
-                        emptyList()))
+                        emptyList())
+                )
                 .contentType(JSON)
                 // This is a private API that is subject to change, use at your own peril!
                 .post(getBaseUrl() + webResourceUrl)

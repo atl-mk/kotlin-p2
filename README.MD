@@ -10,5 +10,4 @@ Full documentation is always available at:
 
 https://developer.atlassian.com/display/DOCS/Introduction+to+the+Atlassian+Plugin+SDK
 
-**Note:** The dependencies versions we've picked are for compatibility only! We recommend you review the versions 
-        and make sure they are not vulnerable and target the latest version of the product
+**Note:** 
